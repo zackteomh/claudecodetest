@@ -1,0 +1,23 @@
+[project]
+name = "autoresearch-trading"
+version = "0.1.0"
+description = "Autonomous trading strategy research — adapted from karpathy/autoresearch"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "numpy>=2.0.0",
+    "pandas>=2.2.0",
+    "torch>=2.2.0",
+    "yfinance>=0.2.36",
+    "matplotlib>=3.9.0",
+]
+
+[tool.uv.sources]
+torch = [
+    { index = "pytorch-cu128" },
+]
+
+[[tool.uv.index]]
+name = "pytorch-cu128"
+url = "https://download.pytorch.org/whl/cu128"
+explicit = true

@@ -1,0 +1,18 @@
+# Data
+*.pkl
+*.pt
+data/
+~/.cache/autoresearch-trading/
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+*.egg-info/
+
+# Experiment artifacts
+run.log
+results.tsv
+
+# UV
+uv.lock
