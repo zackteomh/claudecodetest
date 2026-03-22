@@ -14,5 +14,8 @@ __pycache__/
 run.log
 results.tsv
 
+# Environment / secrets
+.env
+
 # UV
 uv.lock

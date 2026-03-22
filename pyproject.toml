@@ -10,5 +10,6 @@ dependencies = [
     "torch>=2.2.0",
     "yfinance>=0.2.36",
     "matplotlib>=3.9.0",
+    "alpaca-py>=0.30.0",
 ]
 

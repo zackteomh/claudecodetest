@@ -292,6 +292,18 @@ val_sharpe = evaluate_sharpe(model, val_data, batch_size=BATCH_SIZE, device=devi
 t_end = time.time()
 peak_vram_mb = torch.cuda.max_memory_allocated() / 1024 / 1024
 
+# Save model checkpoint for live trading
+checkpoint_dir = os.path.join(os.path.expanduser("~"), ".cache", "autoresearch-trading", "checkpoints")
+os.makedirs(checkpoint_dir, exist_ok=True)
+checkpoint_path = os.path.join(checkpoint_dir, "model.pt")
+torch.save({
+    "model_state_dict": model._orig_mod.state_dict() if hasattr(model, '_orig_mod') else model.state_dict(),
+    "config": asdict(config),
+    "stats": {k: v.cpu() if isinstance(v, torch.Tensor) else v for k, v in stats.items()},
+    "val_sharpe": val_sharpe,
+}, checkpoint_path)
+print(f"Saved checkpoint to {checkpoint_path}")
+
 print("---")
 print(f"val_sharpe:       {val_sharpe:.6f}")
 print(f"training_seconds: {total_training_time:.1f}")
