@@ -197,6 +197,9 @@ def prepare_tensors(data, tickers, val_fraction=0.2):
             all_targets.append(target)
             all_ticker_ids.append(ticker_to_id[ticker])
 
+    if not all_features:
+        raise ValueError("No valid data found. Check that tickers downloaded successfully (run prepare.py with internet access).")
+
     features = torch.tensor(np.array(all_features), dtype=torch.float32)
     targets = torch.tensor(np.array(all_targets), dtype=torch.float32)
     ticker_ids = torch.tensor(np.array(all_ticker_ids), dtype=torch.long)
