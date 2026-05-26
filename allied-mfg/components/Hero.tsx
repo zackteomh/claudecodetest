@@ -3,6 +3,8 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+
 export default function Hero() {
   return (
     <section className="relative h-screen min-h-[600px] flex items-center overflow-hidden">
@@ -14,13 +16,12 @@ export default function Hero() {
           loop
           playsInline
           className="w-full h-full object-cover"
-          poster="/images/hero-poster.jpg"
         >
-          <source src="/videos/hero-machining.mp4" type="video/mp4" />
+          <source src={`${basePath}/videos/hero-machining.mp4`} type="video/mp4" />
         </video>
         {/* Light overlay */}
-        <div className="absolute inset-0 bg-white/55" />
-        {/* Subtle gradient fade at bottom */}
+        <div className="absolute inset-0 bg-white/50" />
+        {/* Gradient fade at bottom */}
         <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[#F5F5F7] to-transparent" />
       </div>
 
@@ -83,7 +84,7 @@ export default function Hero() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.2 }}
-        className="absolute bottom-10 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2"
+        className="absolute bottom-10 left-1/2 -translate-x-1/2 z-10"
       >
         <motion.div
           animate={{ y: [0, 6, 0] }}
